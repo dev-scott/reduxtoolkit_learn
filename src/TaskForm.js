@@ -1,18 +1,19 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { adddTask } from "./redux";
 
-const TaskForm = (props) => {
-  const [text, setText] = useState("");
+const TaskForm = () => {
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const [text, setText] = useState('');
 
-    props.addTask(text);
 
-    setText("");
-  };
+  
+
+
+const dispatch = useDispatch();
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit= {()=>dispatch(adddTask(text))}>
       <input
         type="text"
         placeholder="Ajouter une tâche"
